@@ -26,6 +26,7 @@ public class LoginPageTest {
     @ParameterizedTest(name = "login = {0}, password = {1}")
     @DisplayName("check correct data for login form")
     @CsvFileSource(resources = {"/data.csv"})
+    @Timeout(10)
     public void checkLoginPage(String login, String password) {
         loginOrchestrator
                 .loginOnPage(login, password)
@@ -34,6 +35,7 @@ public class LoginPageTest {
     }
 
     @Test
+    @Timeout(10)
     @DisplayName("check empty login")
     public void checkEmptyLogin() {
         loginOrchestrator
@@ -44,6 +46,7 @@ public class LoginPageTest {
     }
 
     @Test
+    @Timeout(10)
     @DisplayName("check incorrect data for login form")
     public void checkIncorrectData() {
         loginOrchestrator
