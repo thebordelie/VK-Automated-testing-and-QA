@@ -20,7 +20,7 @@ public class LoginPageTest {
     public static void setup() {
         Configuration.baseUrl = "https://ok.ru/";
         WebDriverManager.chromedriver().driverVersion("123").setup();
-        System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\",\"--headless\"\"");
+        System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\",\"--headless\"");
         System.setProperty("webdriver.chrome.driver", "//usr/bin//chromedriver");
     }
 
