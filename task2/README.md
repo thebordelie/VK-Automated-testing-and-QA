@@ -21,4 +21,6 @@
  - [LoginActor](src/test/java/ru/ok/model/LoginOrchestrator.java)
  - [MainPageActor](src/test/java/ru/ok/model/MainPageActor.java)
 
-
+---
+## Результат
+Для удобной проверки результатов был настроен [CI](../.github/workflows/task2.yml)
