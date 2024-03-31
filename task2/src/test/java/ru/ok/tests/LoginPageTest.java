@@ -12,6 +12,7 @@ import ru.ok.model.LoginPage;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginPageTest {
     private final LoginPageActor loginPageActor = new LoginPageActor(new LoginPage());
@@ -21,7 +22,7 @@ public class LoginPageTest {
         Configuration.baseUrl = "https://ok.ru/";
         WebDriverManager.chromedriver().driverVersion("123").setup();
         System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\",\"--headless\"\"");
-        System.setProperty("webdriver.chrome.driver", "//usr/bin//chromedriver");
+//        System.setProperty("webdriver.chrome.driver", "//usr/bin//chromedriver");
     }
 
     @AfterEach
@@ -33,29 +34,27 @@ public class LoginPageTest {
     @DisplayName("check correct data for login form")
     @CsvFileSource(resources = {"/data.csv"})
     public void checkLoginPage(String login, String password) {
-        loginPageActor
-                .loginOnPage(login, password)
-                .findSpanElementOnPage("hook_Block_AsideColumn")
-                .shouldBe(visible);
+        assertEquals(loginPageActor
+                        .loginOnPage(login, password)
+                        .findElementByClass("tico ellip")
+                        .getText(), "technopol52 technopol52");
     }
 
     @Test
     @DisplayName("check empty login")
     public void checkEmptyLogin() {
-        loginPageActor
+        assertEquals(loginPageActor
                 .loginOnPage("", "")
                 .findErrorMessage()
-                .shouldBe(visible)
-                .shouldHave(text("Введите логин"));
+                .getText(), "Введите логин");
     }
 
     @Test
     @DisplayName("check incorrect data for login form")
     public void checkIncorrectData() {
-        loginPageActor
+        assertEquals(loginPageActor
                 .loginOnPage("incorrectLogin", "incorrectPassword")
                 .findErrorMessage()
-                .shouldBe(visible)
-                .shouldHave(text("Неправильно указан логин и/или пароль"));
+                .getText(), "Неправильно указан логин и/или пароль");
     }
 }

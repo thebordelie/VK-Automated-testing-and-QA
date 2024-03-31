@@ -1,12 +1,13 @@
 package ru.ok.model;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import lombok.Getter;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-@Getter
+
 public class MainPage {
     private final SelenideElement searchElement = $x("//input[@type='text' and @placeholder='Искать на сайте']");
     private final SelenideElement infoAboutGroups = $x("//h2[@class='heading__unijc __h2__unijc' and contains(text(), 'групп')]");
@@ -29,5 +30,10 @@ public class MainPage {
     public MainPage pressGroupsButton() {
         groupsButton.click();
         return this;
+    }
+
+    public SelenideElement getInfoAboutGroups(){
+        infoAboutGroups.shouldBe(Condition.visible);
+        return infoAboutGroups;
     }
 }
