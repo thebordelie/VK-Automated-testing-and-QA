@@ -20,7 +20,7 @@ public class MainPageTest {
         Configuration.baseUrl = "https://ok.ru/";
         WebDriverManager.chromedriver().driverVersion("123").setup();
         System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\",\"--headless\"");
-//        System.setProperty("webdriver.chrome.driver", "//usr//bin//chromedriver");
+        System.setProperty("webdriver.chrome.driver", "//usr//bin//chromedriver");
         loginPageActor.loginOnPage("technopol52", "technopolisPassword");
     }
 
