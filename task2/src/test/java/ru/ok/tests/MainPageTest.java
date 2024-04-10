@@ -33,7 +33,7 @@ public class MainPageTest {
     @Test
     @DisplayName("check search results for groups that don't exists")
     public void checkSearchOnNonExistingGroups() {
-        mainPageActor.searchOnSite("12345678911");
+        mainPageActor.searchOnSite("12345678911123525127350892745");
         assertEquals(mainPageActor
                 .switchToGroutTab()
                 .getInfoAboutGroups()
