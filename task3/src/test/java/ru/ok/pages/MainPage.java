@@ -1,28 +1,22 @@
 package ru.ok.pages;
 
-import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage {
-    private By searchInputLocator = By.xpath("//input[@type='text' and @placeholder='Искать на сайте']");
-
-    public MainPage openPage() {
-        Selenide.open("/");
-        return this;
-    }
+    private final By SEARCH_INPUT_LOCATOR = By.xpath("//input[@type='text' and @placeholder='Искать на сайте']");
 
     public MainPage enterTextInSearchBar(String text) {
-        $(searchInputLocator)
+        $(SEARCH_INPUT_LOCATOR)
                 .shouldBe(visible)
                 .sendKeys(text);
         return this;
     }
 
     public SearchResult pressSearchButton() {
-        $(searchInputLocator)
+        $(SEARCH_INPUT_LOCATOR)
                 .shouldBe(visible)
                 .pressEnter();
         return new SearchResult();

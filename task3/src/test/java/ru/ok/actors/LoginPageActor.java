@@ -9,7 +9,6 @@ public class LoginPageActor {
 
     public LoginPage loginOnPage(String login, String password) {
         loginPage
-                .openPage()
                 .enterLogin(login)
                 .enterPassword(password)
                 .clickLoginButton();

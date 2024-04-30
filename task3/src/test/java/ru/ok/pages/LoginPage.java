@@ -1,6 +1,5 @@
 package ru.ok.pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -11,18 +10,13 @@ import static org.openqa.selenium.By.xpath;
 
 
 public class LoginPage {
-    private final By loginInputLocator = xpath("//input[@id='field_email']");
-    private final By passwordInputLocator = xpath("//input[@id='field_password']");
-    private final By loginButtonLocator = xpath("//input[@value='Войти в Одноклассники']");
-    private final By errorMessageLocator = xpath("//div[@class='input-e login_error']");
-
-    public LoginPage openPage() {
-        Selenide.open("/");
-        return this;
-    }
+    private final By LOGIN_INPUT_LOCATOR = xpath("//input[@id='field_email']");
+    private final By PASSWORD_INPUT_LOCATOR = xpath("//input[@id='field_password']");
+    private final By LOGIN_BUTTON_LOCATOR = xpath("//input[@value='Войти в Одноклассники']");
+    private final By ERROR_MESSAGE_LOCATOR = xpath("//div[@class='input-e login_error']");
 
     public LoginPage enterLogin(String userName) {
-        $(loginInputLocator)
+        $(LOGIN_INPUT_LOCATOR)
                 .as("Login input")
                 .shouldBe(visible)
                 .sendKeys(userName);
@@ -30,7 +24,7 @@ public class LoginPage {
     }
 
     public LoginPage enterPassword(String password) {
-        $(passwordInputLocator)
+        $(PASSWORD_INPUT_LOCATOR)
                 .as("Password input")
                 .shouldBe(visible)
                 .sendKeys(password);
@@ -38,17 +32,18 @@ public class LoginPage {
     }
 
     public LoginPage clickLoginButton() {
-        $(loginButtonLocator)
+        $(LOGIN_BUTTON_LOCATOR)
                 .as("login button")
                 .shouldBe(visible)
                 .click();
         return this;
     }
 
-    public SelenideElement getErrorMessage() {
-        return $(errorMessageLocator)
+    public String getErrorMessage() {
+        return $(ERROR_MESSAGE_LOCATOR)
                 .as("Error message")
-                .shouldBe(visible);
+                .shouldBe(visible)
+                .getText();
     }
 
     public SelenideElement findElementOnPage(String tag, String attribute, String value) {

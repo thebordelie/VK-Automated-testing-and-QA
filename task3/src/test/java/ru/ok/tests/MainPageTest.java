@@ -1,6 +1,7 @@
 package ru.ok.tests;
 
 
+import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.*;
 import ru.ok.actors.LoginPageActor;
 import ru.ok.actors.MainPageActor;
@@ -16,9 +17,9 @@ public class MainPageTest extends BaseTest {
     private final MainPageActor mainPageActor = new MainPageActor(new MainPage());
     private static final LoginPageActor loginPageActor = new LoginPageActor(new LoginPage());
 
-    @BeforeAll
-    public static void setup() {
-        BaseTest.setup();
+
+    @BeforeEach
+    public void loginOnPage() {
         loginPageActor.loginOnPage("technopol52", "technopolisPassword");
     }
 

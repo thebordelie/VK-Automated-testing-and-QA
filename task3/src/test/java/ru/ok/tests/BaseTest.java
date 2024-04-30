@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,12 +21,18 @@ public class BaseTest {
         }
     }
 
+
     @BeforeAll
     public static void setup() {
         Configuration.baseUrl = properties.getProperty("base_url");
-        WebDriverManager.chromedriver().driverVersion(properties.getProperty("driver_version")).setup();
+//        WebDriverManager.chromedriver().driverVersion(properties.getProperty("driver_version")).setup();
         System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\"");
-        System.setProperty("webdriver.chrome.driver", "//usr/bin//chromedriver");
+//        System.setProperty("webdriver.chrome.driver", "//usr/bin//chromedriver");
+    }
+
+    @BeforeEach
+    public void open() {
+        Selenide.open("/");
     }
 
     @AfterEach

@@ -10,7 +10,6 @@ public class MainPageActor {
 
     public SearchResult searchOnSite(String text) {
         return mainPage
-                .openPage()
                 .enterTextInSearchBar(text)
                 .pressSearchButton();
     }

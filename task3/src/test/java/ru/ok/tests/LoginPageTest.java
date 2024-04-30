@@ -32,8 +32,7 @@ public class LoginPageTest extends BaseTest {
         public void checkEmptyLogin() {
             assertEquals(loginPageActor
                     .loginOnPage("", "")
-                    .getErrorMessage()
-                    .getText(), "Введите логин");
+                    .getErrorMessage(), "Введите логин");
         }
 
         @Test
@@ -41,8 +40,7 @@ public class LoginPageTest extends BaseTest {
         public void checkEmptyPassword() {
             assertEquals(loginPageActor
                     .loginOnPage("213", "")
-                    .getErrorMessage()
-                    .getText(), "Введите пароль");
+                    .getErrorMessage(), "Введите пароль");
         }
 
         @Test
@@ -50,8 +48,7 @@ public class LoginPageTest extends BaseTest {
         public void checkIncorrectData() {
             assertEquals(loginPageActor
                     .loginOnPage("incorrectLogin", "incorrectPassword")
-                    .getErrorMessage()
-                    .getText(), "Неправильно указан логин и/или пароль");
+                    .getErrorMessage(), "Неправильно указан логин и/или пароль");
         }
 
     }
