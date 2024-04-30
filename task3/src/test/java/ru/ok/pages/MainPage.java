@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage {
-    private final By SEARCH_INPUT_LOCATOR = By.xpath("//input[@type='text' and @placeholder='Искать на сайте']");
+    private final By SEARCH_INPUT_LOCATOR = By.xpath("//input[@type='text' and @placeholder='Search site']");
 
     public MainPage enterTextInSearchBar(String text) {
         $(SEARCH_INPUT_LOCATOR)
