@@ -25,7 +25,7 @@ public class BaseTest {
     @BeforeAll
     public static void setup() {
         Configuration.baseUrl = properties.getProperty("base_url");
-        System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\"");
+        System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\",\"--headless\"");
     }
 
     @BeforeEach
