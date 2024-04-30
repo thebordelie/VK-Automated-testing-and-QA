@@ -25,9 +25,7 @@ public class BaseTest {
     @BeforeAll
     public static void setup() {
         Configuration.baseUrl = properties.getProperty("base_url");
-//        WebDriverManager.chromedriver().driverVersion(properties.getProperty("driver_version")).setup();
         System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\"");
-//        System.setProperty("webdriver.chrome.driver", "//usr/bin//chromedriver");
     }
 
     @BeforeEach
